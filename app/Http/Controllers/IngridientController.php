@@ -22,7 +22,9 @@ class IngridientController extends Controller
                         'meals.image',
                         'meals.category',
                         'ingridients.ingridients',
-                        'ingridients.process',)
+                        'ingridients.process',
+                        'ingridients.time',
+                         'ingridients.people')
                         ->where('meals.id', '=', $meals_id)
                         ->get()
     );

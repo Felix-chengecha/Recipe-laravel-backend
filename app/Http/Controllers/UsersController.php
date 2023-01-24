@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\userresource;
 use Exception;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -35,6 +36,7 @@ class UsersController extends Controller
 
             $user->name=$request->name;
             $user->email=$request->email;
+            $user->level=$request->level;
             $user->password=$encryptpass;
 
             $user->save();
@@ -47,9 +49,12 @@ class UsersController extends Controller
             ]);
 
         }
+    }
 
+    public function user_details(Request $request){
+        $userid=$request->user_id;
 
-
+       return userresource::collection(User::where('id',$userid)->get());
 
     }
 }

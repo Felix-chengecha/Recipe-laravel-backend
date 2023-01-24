@@ -22,7 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/Recipe/allfoods',[MealsController::class,'all_meals']);
+Route::post('/Recipe/allrecipes',[MealsController::class,'all_meals']);
 
 Route::post('/Recipe/getingridients',[IngridientController::class,'all_ingridients']);
 
@@ -32,11 +32,14 @@ Route::post('/Recipe/searchfood',[MealsController::class,'search_food']);
 
 Route::post('/Recipe/boookmarks',[BookmarkController::class,'all_bookmarks']);
 
-Route::post('/Recipe/add_boomark', [BookmarkController::class,'save_boomark']);
+Route::post('/Recipe/add_bookmark', [BookmarkController::class,'save_boomark']);
 
 
 Route::post('/Recipe/login',[UsersController::class,'user_login']);
 Route::post('/Recipe/register',[UsersController::class,'user_register']);
+
+Route::post('/Recipe/userdetails',[UsersController::class,'user_details']);
+
 
 
 

@@ -20,12 +20,23 @@ class BookmarkController extends Controller
 }
 
        public function save_boomark(Request $request){
+
+        $check=Bookmarks::where('user_id', $request->user_id)->where('meals_id',$request->meals_id)->exists();
+          if($check){
+            return response()->json([
+                'MSG'=>'you have already saved this bookmark'
+            ]);
+          }
             $bookmarks=new Bookmarks();
                 $bookmarks->user_id=$request->user_id;
                 $bookmarks->meals_id=$request->meals_id;
                 $bookmarks->save();
-                $response['MSG'] = "bookmarks saved";
-                return json_encode($response);
+
+            return response()->json([
+                'MSG' => 'bookmarks saved successfully'
+             ]);
+
+
     }
 
 }

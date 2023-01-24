@@ -21,6 +21,8 @@ class IngridientsResource extends JsonResource
             'category'=>$this->category,
             'ingridients' =>$this->ingridients,
             'process'=>$this->process,
+            'people'=>$this->people,
+            'time'=>$this->time
         ];
 
     }
